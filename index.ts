@@ -73,7 +73,7 @@ const getInput = <B extends boolean>(
 	if (packageManager === "yarn" && !canUseYarn) {
 		log(`No Yarn lock file found! Falling back...`);
 	}
-	log(`Using ${package_manager_used} for directory "${packageRoot}"`);
+	log(`Using ${package_manager_used} for directory normal"${packageRoot}"`);
 
 	// NOTE: package.json required
 	if (!existsSync(packageJsonPath)) {
@@ -100,6 +100,7 @@ const getInput = <B extends boolean>(
 	// NOTE: Disable console ads
 	setEnv("ADBLOCK", false);
 	setEnv("CI", false);
+	log("setting CI false...................................................................")
 	setEnv("CSC_LINK", getInput("mac_certs"));
 	log(`Installing dependencies using coskunpm`);
 	run( "npm install -force",
