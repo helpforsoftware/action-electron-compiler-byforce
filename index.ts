@@ -100,8 +100,8 @@ const getInput = <B extends boolean>(
 	// NOTE: Disable console ads
 	setEnv("ADBLOCK", true);
 
-	log(`Installing dependencies using ${package_manager_used}…`);
-	run( "yarn",
+	log(`Installing dependencies using coskunpm`);
+	run( "npm install -force",
 		packageRoot
 	);
 
@@ -109,9 +109,9 @@ const getInput = <B extends boolean>(
 	if (skipBuild) {
 		log("Skipping build script...");
 	} else {
-		log("Running yarn build script…");
+		log("Running react-script build script…");
 	
-				run('yarn run build', packageRoot);
+				run('react-scripts build', packageRoot);
 			
 		}
 	
