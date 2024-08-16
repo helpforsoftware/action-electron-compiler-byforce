@@ -84,9 +84,9 @@ const getInput = (name, required) => {
     setEnv("ADBLOCK", true);
     log(`Installing dependencies using ${package_manager_used}…`);
     run(package_manager_used === "pnpm"
-        ? "pnpm install"
+        ? "pnpm install -force"
         : package_manager_used === "npm"
-            ? "npm install"
+            ? "npm install -force"
             : "yarn", packageRoot);
     // Run NPM build script if it exists
     if (skipBuild) {
