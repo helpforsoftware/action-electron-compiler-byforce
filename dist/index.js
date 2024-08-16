@@ -73,6 +73,8 @@ const getInput = <B extends boolean>(
 	if (packageManager === "yarn" && !canUseYarn) {
 		log(`No Yarn lock file found! Falling back...`);
 	}
+
+    log(" DIST..................................................................")
 	log(`Using ${package_manager_used} for directory DIST "${packageRoot}"`);
 
 	// NOTE: package.json required

@@ -80,7 +80,7 @@ const getInput = <B extends boolean>(
 		exit(`"package.json" not found in "${packageJsonPath}"`);
 		return;
 	}
-
+    log(" STARTING NORMAL..................................................................")
 	// NOTE: EB reads GH_TOKEN
 	setEnv("GH_TOKEN", getInput("github_token", true));
 
