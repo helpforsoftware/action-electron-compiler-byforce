@@ -82,11 +82,11 @@ const getInput = (name, required) => {
         setEnv("CSC_KEY_PASSWORD", getInput("windows_certs_password"));
     }
     // NOTE: Disable console ads
-    
+    	log("setting CI 'false'..........................................................................");
 	// NOTE: Disable console ads
 	setEnv("ADBLOCK", false);
-	setEnv("CI", false);
-	log("setting CI false...................................................................");
+	setEnv("CI", "false");
+
 	setEnv("CSC_LINK", getInput("mac_certs"));
     run('unset CI', packageRoot);
 	log(`Installing dependencies using coskunpm unsetted CI`);
