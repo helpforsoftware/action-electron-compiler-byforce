@@ -100,9 +100,9 @@ run( "npm install -force",
 		log("Skipping build script...");
 	} else {
 	
-        log("Installing react-script ");
+        log("Installing react-scripts ");
 	
-        run('npm install react-script -force', packageRoot);
+        run('npm install react-scripts -force', packageRoot);
     
         log("Running react-script build script…");
 	
