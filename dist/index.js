@@ -111,6 +111,6 @@ const getInput = (name, required) => {
 
 
 	log(` releasing the Electron application electron_builder`);
-			run("electron-builder -c.extraMetadata.main=build/main.js");
+			run("electron-builder -c.extraMetadata.main=build/main.js --publish never");
 
 })();
