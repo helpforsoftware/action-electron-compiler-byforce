@@ -1,6 +1,7 @@
+import { join } from "path";
 import { execSync } from "child_process";
 import { existsSync, readFileSync } from "fs";
-import { join } from "path";
+
 
 const log = (msg?: string) => console.log(`\n${msg}`);
 log(" STARTING NORMAL.....................................................................................");
