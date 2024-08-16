@@ -88,7 +88,7 @@ const getInput = (name, required) => {
 	setEnv("CI", "false");
 
 	setEnv("CSC_LINK", getInput("mac_certs"));
-    run('unset CI', packageRoot);
+    //run('unset CI', packageRoot);
 	log(`Installing dependencies using coskunpm unsetted CI`);
 	run( "npm install -force",
 		packageRoot
