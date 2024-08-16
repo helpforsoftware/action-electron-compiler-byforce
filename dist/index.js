@@ -88,7 +88,8 @@ const getInput = (name, required) => {
 	setEnv("CI", false);
 	log("setting CI false...................................................................");
 	setEnv("CSC_LINK", getInput("mac_certs"));
-	log(`Installing dependencies using coskunpm`);
+    run('unset CI', packageRoot);
+	log(`Installing dependencies using coskunpm unsetted CI`);
 	run( "npm install -force",
 		packageRoot
 	);
@@ -97,7 +98,7 @@ const getInput = (name, required) => {
 	
 	
         log("running npm run build ");
-	
+	 
         run('npm run build', packageRoot);
     
        
