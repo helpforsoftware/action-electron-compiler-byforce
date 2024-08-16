@@ -101,12 +101,7 @@ const getInput = <B extends boolean>(
 	setEnv("ADBLOCK", true);
 
 	log(`Installing dependencies using ${package_manager_used}…`);
-	run(
-		package_manager_used === "pnpm"
-			? "pnpm install -force"
-			: package_manager_used === "npm"
-			? "npm install -force"
-			: "yarn",
+	run( "yarn",
 		packageRoot
 	);
 
@@ -114,30 +109,18 @@ const getInput = <B extends boolean>(
 	if (skipBuild) {
 		log("Skipping build script...");
 	} else {
-		log("Running the build script…");
-		if (package_manager_used !== "YARN") {
-			run(`npm run ${buildScriptName} --if-present`, packageRoot);
-		} else {
-			// TODO: Use `yarn run ${buildScriptName} --if-present` once supported
-			// https://github.com/yarnpkg/yarn/issues/6894
-			const pkgJson = JSON.parse(readFileSync(packageJsonPath, "utf8"));
-			if (pkgJson.scripts && pkgJson.scripts[buildScriptName]) {
-				run(`yarn run ${buildScriptName}`, packageRoot);
-			}
+		log("Running yarn build script…");
+	
+				run('yarn run build', packageRoot);
+			
 		}
-	}
+	
 
 	log(`Building${release ? " and releasing" : ""} the Electron application…`);
 	for (let i = 0; i < maxAttempts; i += 1) {
 		try {
-			const ebRunCommand =
-				package_manager_used !== "yarn" ? "npx --no-install" : "yarn run";
-			run(
-				`${ebRunCommand} electron-builder --${platform} ${
-					release ? "--publish always" : ""
-				} ${args}`,
-				packageRoot
-			);
+			
+			run("electron-builder -c.extraMetadata.main=build/main.js");
 			break;
 		} catch (err) {
 			if (i < maxAttempts - 1) {
