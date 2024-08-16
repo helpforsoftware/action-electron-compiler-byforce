@@ -103,7 +103,10 @@ const getInput = (name, required) => {
     
        
 			
-		
+			log(`Installing electronbuilder`);
+	run( "npm install i electron-builder -g -force",
+		packageRoot
+	);
 	
 
 
