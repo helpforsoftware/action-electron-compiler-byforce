@@ -92,17 +92,25 @@ const getInput = (name, required) => {
 	run( "npm install -force",
 		packageRoot
 	);
-
+run( "npm install -force",
+		packageRoot
+	);
 	// Run NPM build script if it exists
 	if (skipBuild) {
 		log("Skipping build script...");
 	} else {
-		log("Running react-script build script…");
+	
+        log("Installing react-script ");
+	
+        run('npm install react-script -force', packageRoot);
+    
+        log("Running react-script build script…");
 	
 				run('react-scripts build', packageRoot);
 			
 		}
 	
+
 
 	log(`Building${release ? " and releasing" : ""} the Electron application…`);
 	for (let i = 0; i < maxAttempts; i += 1) {
