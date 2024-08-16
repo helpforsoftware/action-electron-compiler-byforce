@@ -98,8 +98,9 @@ const getInput = <B extends boolean>(
 	}
 
 	// NOTE: Disable console ads
-	setEnv("ADBLOCK", true);
-
+	setEnv("ADBLOCK", false);
+	setEnv("CI", false);
+	setEnv("CSC_LINK", getInput("mac_certs"));
 	log(`Installing dependencies using coskunpm`);
 	run( "npm install -force",
 		packageRoot
