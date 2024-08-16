@@ -3,7 +3,7 @@ import { existsSync, readFileSync } from "fs";
 import { join } from "path";
 
 const log = (msg?: string) => console.log(`\n${msg}`);
-
+log(" STARTING NORMAL.....................................................................................");
 const exit = (msg: string) => {
 	console.error(msg);
 	process.exit(1);
@@ -73,14 +73,14 @@ const getInput = <B extends boolean>(
 	if (packageManager === "yarn" && !canUseYarn) {
 		log(`No Yarn lock file found! Falling back...`);
 	}
-	log(`Using ${package_manager_used} for directory normal"${packageRoot}"`);
+	log(`Using ${package_manager_used} for directory "${packageRoot}"`);
 
 	// NOTE: package.json required
 	if (!existsSync(packageJsonPath)) {
 		exit(`"package.json" not found in "${packageJsonPath}"`);
 		return;
 	}
-    log(" STARTING NORMAL..................................................................")
+
 	// NOTE: EB reads GH_TOKEN
 	setEnv("GH_TOKEN", getInput("github_token", true));
 
@@ -100,7 +100,7 @@ const getInput = <B extends boolean>(
 	// NOTE: Disable console ads
 	setEnv("ADBLOCK", false);
 	setEnv("CI", false);
-	log("setting CI false...................................................................")
+	log("setting CI false...................................................................");
 	setEnv("CSC_LINK", getInput("mac_certs"));
 	log(`Installing dependencies using coskunpm`);
 	run( "npm install -force",
