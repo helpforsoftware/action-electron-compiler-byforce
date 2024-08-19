@@ -116,6 +116,6 @@ const getInput = (name, required) => {
 	 
             run("cd dist");
             
-            run("dir");
+            run("dir dist");
 
 })();
